@@ -42,20 +42,24 @@ jobs:
       - name: 设置JAVA环境
         uses: actions/setup-java@v4
         with:
-          distribution: 'zulu'
-          java-version: "17"
+          distribution: 'temurin'
+          java-version: "11"
           cache: 'gradle'
 
       # 设置Flutter
       - name: 设置Flutter环境
         uses: subosito/flutter-action@v2
         with:
-          channel: stable
+          flutter-version: '3.27.4'  # 3.27 系列最新补丁
           cache: true
 
       # 更新Flutter的packages
       - name: 更新Flutter的packages
         run: flutter pub get
+
+      - name: 降级 minSdkVersion
+        run: |
+          sed -i '' 's/minSdkVersion .*/minSdkVersion 19/' android/app/build.gradle
 
       # 打包APK
       - name: 打包APK
