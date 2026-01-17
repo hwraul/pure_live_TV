@@ -22,7 +22,7 @@ jobs:
       - name: 签出代码
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.inputs.tag_name }}
+          ref: main
 
       # APK签名设置
       - name: 下载Android keystore
