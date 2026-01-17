@@ -59,7 +59,7 @@ jobs:
 
       - name: 降级 minSdkVersion
         run: |
-          sed -i '' 's/minSdkVersion .*/minSdkVersion 19/' android/app/build.gradle
+          sed -i '' 's/minSdk = flutter.minSdkVersion/minSdk = 21/' android/app/build.gradle.kts
 
       # 打包APK
       - name: 打包APK
